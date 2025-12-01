@@ -5,7 +5,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import YouTube from "react-youtube";
 import { Button } from "@/components/ui/button";
 import { SplashScreen } from "@/components/splash-screen";
-import { Check, Volume2, VolumeX } from "lucide-react";
+import { Check } from "lucide-react";
 import { StepsLayout } from "@/components/steps-layout";
 
 export default function HomePage() {
@@ -14,37 +14,18 @@ export default function HomePage() {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(true);
-  const [player, setPlayer] = useState<any>(null);
-  const [isMuted, setIsMuted] = useState(true);
 
   const handleNextStep = () => {
     router.push("/step-2");
   };
 
-  const onReady = (event: { target: any }) => {
-    setPlayer(event.target);
-  };
-
-  const toggleMute = () => {
-    if (!player) return;
-    if (isMuted) {
-      player.unMute();
-    } else {
-      player.mute();
-    }
-    setIsMuted(!isMuted);
-  };
-
   const youtubeOpts = {
     playerVars: {
-      autoplay: 1,
-      mute: 1,
-      loop: 1,
-      playlist: "33qZnzsltjA",
+      autoplay: 0, // Disable autoplay
+      controls: 1, // Enable native controls
       modestbranding: 1,
       rel: 0,
       showinfo: 0,
-      controls: 0,
     },
   };
 
@@ -90,23 +71,8 @@ export default function HomePage() {
               <YouTube
                 videoId="33qZnzsltjA"
                 opts={youtubeOpts}
-                onReady={onReady}
                 className="w-full h-full"
               />
-              <div className="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <Button
-                  onClick={toggleMute}
-                  size="icon"
-                  variant="ghost"
-                  className="text-white bg-black/50 hover:bg-black/75 hover:text-white rounded-full"
-                >
-                  {isMuted ? (
-                    <VolumeX className="h-5 w-5" />
-                  ) : (
-                    <Volume2 className="h-5 w-5" />
-                  )}
-                </Button>
-              </div>
             </div>
           </div>
           <p className="mt-2 text-neutral-400 font-medium">
