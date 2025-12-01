@@ -1,17 +1,10 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { SplashScreen } from "@/components/splash-screen";
-import { Volume2, VolumeX, RotateCcw, Check } from "lucide-react";
-import { Progress } from "@/components/ui/progress";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+import { Check } from "lucide-react";
 import { StepsLayout } from "@/components/steps-layout";
 
 export default function HomePage() {
@@ -20,78 +13,10 @@ export default function HomePage() {
   const router = useRouter();
 
   const [isLoading, setIsLoading] = useState(true);
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(true);
-  const [progress, setProgress] = useState(0);
 
   const handleNextStep = () => {
     router.push("/step-2");
   };
-
-  const togglePlay = () => {
-    if (videoRef.current) {
-      if (videoRef.current.paused) {
-        videoRef.current.play();
-      } else {
-        videoRef.current.pause();
-      }
-    }
-  };
-
-  const toggleMute = (e: React.MouseEvent) => {
-    e.stopPropagation(); // Prevent the video click handler from firing
-    if (videoRef.current) {
-      const newMutedState = !videoRef.current.muted;
-      videoRef.current.muted = newMutedState;
-      setIsMuted(newMutedState);
-    }
-  };
-
-  const handleRestart = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    if (videoRef.current) {
-      videoRef.current.currentTime = 0;
-      videoRef.current.play();
-    }
-  };
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!isLoading && video) {
-      // Bulletproof iOS autoplay fix
-      video.muted = true;
-      video.setAttribute("muted", "");
-      video.playsInline = true;
-      setIsMuted(true); // Sync state with the DOM
-
-      const playPromise = video.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((error) => {
-          console.error("Autoplay was prevented:", error);
-          // If autoplay fails, the user will have to click to play.
-          // The UI controls will still work as expected.
-        });
-      }
-    }
-  }, [isLoading]);
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-
-    const updateProgress = () => {
-      if (video.duration > 0) {
-        const progressPercentage = (video.currentTime / video.duration) * 100;
-        setProgress(progressPercentage);
-      }
-    };
-
-    video.addEventListener("timeupdate", updateProgress);
-
-    return () => {
-      video.removeEventListener("timeupdate", updateProgress);
-    };
-  }, [isLoading]);
 
   return (
     <StepsLayout currentStep={1}>
@@ -131,55 +56,15 @@ export default function HomePage() {
               after:animate-rotating after:blur-2xl after:opacity-75
             "
           >
-            <div
-              className="w-full h-full rounded-lg overflow-hidden bg-black relative cursor-pointer z-10"
-              onClick={togglePlay}
-            >
-              <video
-                ref={videoRef}
-                className="w-full h-full scale-150"
-                src="https://cbjrmuowhljcfiirdhvv.supabase.co/storage/v1/object/public/assets/6FB/WELCOME_TO_THE_6_FIGURE_BARBER_BLUEPRINT_COMPRESSED.mp4"
-                loop
-                playsInline
-                muted
-              >
-                Your browser does not support the video tag.
-              </video>
-              <Progress
-                value={progress}
-                className="absolute bottom-0 left-0 right-0 w-full h-1.5 rounded-none bg-neutral-500/50 [&>div]:bg-gradient-to-r from-green-300 to-green-500"
-              />
-              <div className="absolute bottom-4 right-4 flex items-center gap-2">
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button
-                        onClick={handleRestart}
-                        size="icon"
-                        variant="ghost"
-                        className="text-white bg-black/50 hover:bg-black/75 hover:text-white rounded-full"
-                      >
-                        <RotateCcw className="h-5 w-5" />
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>
-                      <p>Restart Video</p>
-                    </TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-                <Button
-                  onClick={toggleMute}
-                  size="icon"
-                  variant="ghost"
-                  className="text-white bg-black/50 hover:bg-black/75 hover:text-white rounded-full"
-                >
-                  {isMuted ? (
-                    <VolumeX className="h-5 w-5" />
-                  ) : (
-                    <Volume2 className="h-5 w-5" />
-                  )}
-                </Button>
-              </div>
+            <div className="w-full h-full rounded-lg overflow-hidden bg-black relative z-10">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/33qZnzsltjA?autoplay=1&mute=1&loop=1&playlist=33qZnzsltjA&modestbranding=1&rel=0&showinfo=0&controls=0"
+                title="WELCOME TO THE 6 FIGURE BARBER BLUEPRINT"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              ></iframe>
             </div>
           </div>
           <p className="mt-2 text-neutral-400 font-medium">
