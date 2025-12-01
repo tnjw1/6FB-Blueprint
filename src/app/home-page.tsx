@@ -21,7 +21,7 @@ export default function HomePage() {
 
   const [isLoading, setIsLoading] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const [progress, setProgress] = useState(0);
 
   const handleNextStep = () => {
@@ -133,6 +133,7 @@ export default function HomePage() {
                 src="https://cbjrmuowhljcfiirdhvv.supabase.co/storage/v1/object/public/assets/6FB/WELCOME_TO_THE_6_FIGURE_BARBER_BLUEPRINT_COMPRESSED.mp4"
                 loop
                 playsInline
+                muted
               >
                 Your browser does not support the video tag.
               </video>

@@ -101,6 +101,7 @@ export const VideoPlayer = ({
           src={src}
           loop
           playsInline
+          muted
         >
           Your browser does not support the video tag.
         </video>
