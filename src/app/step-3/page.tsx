@@ -1,18 +1,18 @@
 "use client";
 
+import { useRef } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { StepsLayout } from "@/components/steps-layout";
 import { TestimonialCard } from "@/components/testimonial-card";
 import YouTube from "react-youtube";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+
+import "swiper/css";
+import "swiper/css/navigation";
 
 const testimonials = [
   {
@@ -64,6 +64,8 @@ const whatsappTestimonials = [
 
 export default function Step3Page() {
   const router = useRouter();
+  const testimonialsSwiperRef = useRef<any>(null);
+  const whatsappSwiperRef = useRef<any>(null);
 
   const handleNextStep = () => {
     router.push("/step-4");
@@ -123,66 +125,98 @@ export default function Step3Page() {
             ))}
           </div>
 
-          <Carousel
-            opts={{
-              align: "start",
-            }}
-            className="w-full"
-          >
-            <CarouselContent className="-ml-4">
+          <div className="relative w-full">
+            <Swiper
+              onSwiper={(swiper) => {
+                testimonialsSwiperRef.current = swiper;
+              }}
+              modules={[Navigation]}
+              spaceBetween={16}
+              slidesPerView={1}
+              breakpoints={{
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+              }}
+              className="!px-2 !py-2"
+            >
               {testimonials.map((testimonial, index) => (
-                <CarouselItem
-                  key={index}
-                  className="pl-4 basis-full md:basis-1/2 lg:basis-1/3"
-                >
-                  <div className="p-1">
-                    <TestimonialCard
-                      name={testimonial.name}
-                      text={testimonial.text}
-                      image={testimonial.image}
-                      tag={testimonial.tag}
-                    />
-                  </div>
-                </CarouselItem>
+                <SwiperSlide key={index}>
+                  <TestimonialCard
+                    name={testimonial.name}
+                    text={testimonial.text}
+                    image={testimonial.image}
+                    tag={testimonial.tag}
+                  />
+                </SwiperSlide>
               ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
-          </Carousel>
+            </Swiper>
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute h-8 w-8 rounded-full left-0 top-1/2 -translate-y-1/2 hidden sm:flex z-10"
+              onClick={() => testimonialsSwiperRef.current?.slidePrev()}
+            >
+              <ArrowLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute h-8 w-8 rounded-full right-0 top-1/2 -translate-y-1/2 hidden sm:flex z-10"
+              onClick={() => testimonialsSwiperRef.current?.slideNext()}
+            >
+              <ArrowRight className="h-4 w-4" />
+            </Button>
+          </div>
 
           <div className="flex flex-col gap-4 mt-8">
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground font-sans">
               More Wins From The Group
             </h2>
-            <Carousel
-              opts={{
-                align: "start",
-              }}
-              className="w-full"
-            >
-              <CarouselContent className="-ml-4">
+            <div className="relative w-full">
+              <Swiper
+                onSwiper={(swiper) => {
+                  whatsappSwiperRef.current = swiper;
+                }}
+                modules={[Navigation]}
+                spaceBetween={16}
+                slidesPerView={2}
+                breakpoints={{
+                  640: { slidesPerView: 3 },
+                  768: { slidesPerView: 4 },
+                }}
+                className="!px-2 !py-2"
+              >
                 {whatsappTestimonials.map((src, index) => (
-                  <CarouselItem
-                    key={index}
-                    className="pl-4 basis-1/2 sm:basis-1/3 md:basis-1/4"
-                  >
-                    <div className="p-1">
-                      <div className="overflow-hidden rounded-lg border border-neutral-800">
-                        <Image
-                          src={src}
-                          alt={`WhatsApp testimonial ${index + 1}`}
-                          width={400}
-                          height={800}
-                          className="w-full h-auto"
-                        />
-                      </div>
+                  <SwiperSlide key={index}>
+                    <div className="overflow-hidden rounded-lg border border-neutral-800">
+                      <Image
+                        src={src}
+                        alt={`WhatsApp testimonial ${index + 1}`}
+                        width={400}
+                        height={800}
+                        className="w-full h-auto"
+                      />
                     </div>
-                  </CarouselItem>
+                  </SwiperSlide>
                 ))}
-              </CarouselContent>
-              <CarouselPrevious className="hidden sm:flex" />
-              <CarouselNext className="hidden sm:flex" />
-            </Carousel>
+              </Swiper>
+              <Button
+                variant="outline"
+                size="icon"
+                className="absolute h-8 w-8 rounded-full left-0 top-1/2 -translate-y-1/2 hidden sm:flex z-10"
+                onClick={() => whatsappSwiperRef.current?.slidePrev()}
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                className="absolute h-8 w-8 rounded-full right-0 top-1/2 -translate-y-1/2 hidden sm:flex z-10"
+                onClick={() => whatsappSwiperRef.current?.slideNext()}
+              >
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
 
           <div className="bg-green-500/10 border border-green-400/30 rounded-lg p-4 text-center">
