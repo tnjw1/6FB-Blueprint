@@ -133,9 +133,9 @@ export default function Step3Page() {
               {testimonials.map((testimonial, index) => (
                 <CarouselItem
                   key={index}
-                  className="pl-4 basis-5/6 md:basis-1/2 lg:basis-1/3"
+                  className="pl-4 basis-full md:basis-1/2 lg:basis-1/3"
                 >
-                  <div className="p-1 h-full">
+                  <div className="p-1">
                     <TestimonialCard
                       name={testimonial.name}
                       text={testimonial.text}
