@@ -19,8 +19,8 @@ export const SplashScreen = ({ onAnimationEnd, name }: SplashScreenProps) => {
 
     // Text animations
     timers.push(setTimeout(() => setPhase(1), 100)); // Logo fade-in
-    timers.push(setTimeout(() => setPhase(2), 1200)); // Heading fade-in
-    timers.push(setTimeout(() => setPhase(3), 2700)); // Subtext fade-in
+    timers.push(setTimeout(() => setPhase(2), 800)); // Heading fade-in
+    timers.push(setTimeout(() => setPhase(3), 1800)); // Subtext fade-in
 
     // Progress bar animation
     const progressInterval = setInterval(() => {
@@ -31,16 +31,16 @@ export const SplashScreen = ({ onAnimationEnd, name }: SplashScreenProps) => {
         }
         return prev + 1;
       });
-    }, 105); // ~11 seconds to complete
+    }, 85); // ~9 seconds to complete
 
     // Fade out and end timers
     timers.push(
       setTimeout(() => {
         setIsFadingOut(true);
-      }, 11000) // Start fade out at 11s
+      }, 9000) // Start fade out at 9s
     );
 
-    timers.push(setTimeout(onAnimationEnd, 12000)); // End at 12s
+    timers.push(setTimeout(onAnimationEnd, 10000)); // End at 10s
 
     return () => {
       timers.forEach(clearTimeout);
