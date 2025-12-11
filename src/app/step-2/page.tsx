@@ -29,7 +29,7 @@ export default function Step2Page() {
 
           <div className="w-full max-w-[160px] sm:max-w-xs mx-auto overflow-hidden rounded-lg border border-neutral-700">
             <Image
-              src="/calendar-invite.jpg"
+              src="/calendar-invite-new.png"
               alt="Calendar invite for Toby and Matty Cuts call"
               width={1280}
               height={720}
