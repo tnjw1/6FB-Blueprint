@@ -50,10 +50,9 @@ export default function HomePage() {
               Watch This Before Your Call
             </h2>
             <p className="text-sm sm:text-base text-neutral-300 max-w-3xl mx-auto">
-              Watch this short video in full before your call{name ? `, ${name}` : ''}. In it, we break
-              down exactly how the Blueprint helps barbers go from £1k to
-              £4k/month trapped behind the chair to a structured, six-figure
-              path using systems, content, and discipline.
+              In it, we break down exactly how the Blueprint helps barbers go
+              from £1k to £4k/month trapped behind the chair to a structured,
+              six-figure path using systems, content, and discipline.
             </p>
           </div>
           <p className="text-5xl animate-float">👇</p>
