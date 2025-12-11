@@ -91,7 +91,7 @@ export const SplashScreen = ({ onAnimationEnd, name }: SplashScreenProps) => {
       <div className="absolute bottom-20 w-full max-w-xs px-4">
         <Progress
           value={progress}
-          className="h-2 bg-neutral-800 [&>div]:bg-gradient-to-r from-green-300 to-green-500"
+          className="h-2 bg-neutral-800 [&>div]:bg-gradient-to-r from-[#2E592D] to-[#173215]"
         />
         <p className="text-center text-sm text-neutral-400 mt-2 font-medium">
           Loading... {Math.round(progress)}%

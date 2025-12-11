@@ -26,7 +26,7 @@ export const StepsLayout = ({ currentStep, children }: StepsLayoutProps) => {
       <div className="fixed top-0 left-0 right-0 z-40">
         <Progress
           value={progressValue}
-          className="w-full h-2 rounded-none bg-neutral-700 [&>div]:bg-gradient-to-r from-green-300 to-green-500"
+          className="w-full h-2 rounded-none bg-neutral-700 [&>div]:bg-gradient-to-r from-[#2E592D] to-[#173215]"
         />
         <div className="p-4 bg-black/30 backdrop-blur-sm">
           <div className="w-full max-w-4xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">

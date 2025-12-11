@@ -189,7 +189,7 @@ export default function Step5Page() {
             <Button
               onClick={handleNextStep}
               size="lg"
-              className="w-full sm:w-auto bg-gradient-to-r from-green-300 to-green-500 text-black font-bold py-3 px-8 text-lg flex items-center gap-2 hover:from-green-400 hover:to-green-600"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#2E592D] to-[#173215] text-white font-bold py-3 px-8 text-lg flex items-center gap-2 hover:from-[#173215] hover:to-[#2E592D]"
             >
               I Have Read the FAQs
             </Button>

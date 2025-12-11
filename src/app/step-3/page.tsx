@@ -102,11 +102,11 @@ export default function Step3Page() {
                 className="
                   relative w-full aspect-video
                   before:content-[''] before:absolute before:-inset-0.5 before:rounded-lg
-                  before:bg-[repeating-conic-gradient(from_var(--gradient-angle),theme(colors.green.300)_0%,theme(colors.green.500)_50%,theme(colors.green.300)_100%)]
+                  before:bg-[repeating-conic-gradient(from_var(--gradient-angle),#2E592D_0%,#173215_50%,#2E592D_100%)]
                   before:animate-rotating
 
                   after:content-[''] after:absolute after:-inset-0.5 after:rounded-lg
-                  after:bg-[repeating-conic-gradient(from_var(--gradient-angle),theme(colors.green.300)_0%,theme(colors.green.500)_50%,theme(colors.green.300)_100%)]
+                  after:bg-[repeating-conic-gradient(from_var(--gradient-angle),#2E592D_0%,#173215_50%,#2E592D_100%)]
                   after:animate-rotating after:blur-xl after:opacity-50
                 "
               >
@@ -190,8 +190,8 @@ export default function Step3Page() {
             </div>
           </div>
 
-          <div className="bg-green-500/10 border border-green-400/30 rounded-lg p-4 text-center">
-            <p className="font-medium text-green-300 text-lg">
+          <div className="bg-[#173215]/10 border border-[#173215]/30 rounded-lg p-4 text-center">
+            <p className="font-medium text-[#2E592D] text-lg">
               Your situation isn't unique. Your decision is.
             </p>
           </div>
@@ -200,7 +200,7 @@ export default function Step3Page() {
             <Button
               onClick={handleNextStep}
               size="lg"
-              className="w-full sm:w-auto bg-gradient-to-r from-green-300 to-green-500 text-black font-bold py-3 px-8 text-lg flex items-center gap-2 hover:from-green-400 hover:to-green-600"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#2E592D] to-[#173215] text-white font-bold py-3 px-8 text-lg flex items-center gap-2 hover:from-[#173215] hover:to-[#2E592D]"
             >
               Next Step
             </Button>

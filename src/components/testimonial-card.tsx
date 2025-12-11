@@ -33,7 +33,7 @@ export const TestimonialCard = ({
         </p>
         <div className="mt-4">
           <p className="font-bold text-white">— {name}</p>
-          <p className="text-sm font-medium bg-gradient-to-r from-green-300 to-green-500 text-transparent bg-clip-text">
+          <p className="text-sm font-medium bg-gradient-to-r from-[#2E592D] to-[#173215] text-transparent bg-clip-text">
             {tag}
           </p>
         </div>

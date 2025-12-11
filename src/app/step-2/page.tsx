@@ -39,7 +39,7 @@ export default function Step2Page() {
 
           <div className="flex flex-col gap-6 text-left text-lg">
             <div className="flex items-start gap-4">
-              <div className="bg-green-500/20 text-green-300 rounded-full p-2 mt-1 flex-shrink-0">
+              <div className="bg-[#173215]/20 text-[#2E592D] rounded-full p-2 mt-1 flex-shrink-0">
                 <Check className="h-5 w-5" />
               </div>
               <p>
@@ -49,7 +49,7 @@ export default function Step2Page() {
               </p>
             </div>
             <div className="flex items-start gap-4">
-              <div className="bg-green-500/20 text-green-300 rounded-full p-2 mt-1 flex-shrink-0">
+              <div className="bg-[#173215]/20 text-[#2E592D] rounded-full p-2 mt-1 flex-shrink-0">
                 <LinkIcon className="h-5 w-5" />
               </div>
               <p>
@@ -72,8 +72,8 @@ export default function Step2Page() {
             />
           </div>
 
-          <div className="bg-blue-500/10 border border-blue-400/30 rounded-lg p-4 text-center">
-            <p className="font-medium text-blue-300">
+          <div className="bg-slate-500/10 border border-slate-400/30 rounded-lg p-4 text-center">
+            <p className="font-medium text-slate-300">
               💡 This call could be step 1 towards completely changing your
               income and life as a barber, so don't miss the call!
             </p>
@@ -83,7 +83,7 @@ export default function Step2Page() {
             <Button
               onClick={handleNextStep}
               size="lg"
-              className="w-full sm:w-auto bg-gradient-to-r from-green-300 to-green-500 text-black font-bold py-3 px-8 text-lg flex items-center gap-2 hover:from-green-400 hover:to-green-600"
+              className="w-full sm:w-auto bg-gradient-to-r from-[#2E592D] to-[#173215] text-white font-bold py-3 px-8 text-lg flex items-center gap-2 hover:from-[#173215] hover:to-[#2E592D]"
             >
               Next Step
             </Button>
